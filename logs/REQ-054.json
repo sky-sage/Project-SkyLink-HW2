@@ -1,0 +1,21 @@
+{
+  "id": "REQ-054",
+  "requirement": "The system shall inhibit Cost Index computation and default to minimum-fuel mode when fuel quantity falls below the configured emergency fuel threshold.",
+  "extraction": {
+    "subject": "Cost Index computation",
+    "verb": "inhibit",
+    "objects": [
+      "fuel quantity"
+    ],
+    "sources": [
+      "ADC"
+    ],
+    "destinations": [
+      "system or other devices"
+    ],
+    "constraints": [
+      "minimum fuel threshold",
+      "minimum-fuel mode"
+    ]
+  }
+}

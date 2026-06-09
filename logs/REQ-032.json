@@ -1,0 +1,19 @@
+{
+  "id": "REQ-032",
+  "requirement": "The display processor shall project a TOD icon on the ND at the lateral position computed by the VNAV engine.",
+  "extraction": {
+    "subject": "FMS",
+    "verb": "Receiving data",
+    "objects": [
+      "barometric altitude"
+    ],
+    "sources": [
+      "ADC"
+    ],
+    "destinations": [],
+    "constraints": [
+      "ARINC 429 Label 200",
+      "20 Hz"
+    ]
+  }
+}

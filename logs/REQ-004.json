@@ -1,0 +1,18 @@
+{
+  "id": "REQ-004",
+  "requirement": "The LNAV engine shall calculate continuous lateral cross-track error and output it to the AFCS roll steering channel via ARINC 429 Label 244.",
+  "extraction": {
+    "subject": "FMS",
+    "verb": "receive",
+    "objects": [
+      "barometric altitude"
+    ],
+    "sources": [
+      "ADC"
+    ],
+    "destinations": [],
+    "constraints": [
+      "20 Hz"
+    ]
+  }
+}

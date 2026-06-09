@@ -1,0 +1,16 @@
+{
+  "id": "REQ-021",
+  "requirement": "The system shall interface with the fuel quantity system at 1 Hz via ARINC 429 to acquire total current fuel weight.",
+  "extraction": {
+    "subject": "Fuel quantity system interface with ARINC 429",
+    "verb": "acquire total current fuel weight",
+    "objects": [
+      "total current fuel weight"
+    ],
+    "sources": [
+      "fuel quantity system"
+    ],
+    "destinations": [],
+    "constraints": []
+  }
+}

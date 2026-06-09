@@ -1,0 +1,20 @@
+{
+  "id": "REQ-019",
+  "requirement": "The system shall compute optimum cruise altitude based on current aircraft weight, Cost Index, and wind data.",
+  "extraction": {
+    "subject": "Optimum Cruise Altitude Computation",
+    "verb": "Compute optimal cruise altitude",
+    "objects": [
+      "Aircraft Weight (kW)"
+    ],
+    "sources": [
+      "Requirement"
+    ],
+    "destinations": [],
+    "constraints": [
+      "Aircraft Weight (kW)",
+      "Cost Index",
+      "Wind Conditions (e.g., wind speed, direction)"
+    ]
+  }
+}

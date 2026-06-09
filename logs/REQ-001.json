@@ -1,0 +1,19 @@
+{
+  "id": "REQ-001",
+  "requirement": "The FMS shall allow the flight crew to manually input a flight plan of up to 100 waypoints via the Control Display Unit (CDU).",
+  "extraction": {
+    "subject": "FMS",
+    "verb": "input",
+    "objects": [
+      "CDU"
+    ],
+    "sources": [
+      "ADC"
+    ],
+    "destinations": [],
+    "constraints": [
+      "ARINC 429 Label 200",
+      "waypoints (1-100)"
+    ]
+  }
+}

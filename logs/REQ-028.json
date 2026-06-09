@@ -1,0 +1,19 @@
+{
+  "id": "REQ-028",
+  "requirement": "The FMS shall detect and flag IRS position divergence when two IRS solutions differ by more than 2 NM.",
+  "extraction": {
+    "subject": "FMS",
+    "verb": "Receive",
+    "objects": [
+      "barometric altitude"
+    ],
+    "sources": [
+      "ADC",
+      "ARINC 429 Label 200"
+    ],
+    "destinations": [],
+    "constraints": [
+      "No specific constraint mentioned"
+    ]
+  }
+}

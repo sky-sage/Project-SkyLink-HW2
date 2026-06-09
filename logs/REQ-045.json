@@ -1,0 +1,20 @@
+{
+  "id": "REQ-045",
+  "requirement": "The FMS shall output a system health word to the AFCS via ARINC 429 Label 270 on every processing cycle.",
+  "extraction": {
+    "subject": "FMS",
+    "verb": "receive",
+    "objects": [
+      "ADC"
+    ],
+    "sources": [
+      "FMS"
+    ],
+    "destinations": [
+      "ADC"
+    ],
+    "constraints": [
+      "minimum update rate of 20 Hz"
+    ]
+  }
+}

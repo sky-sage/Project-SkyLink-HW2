@@ -1,0 +1,19 @@
+{
+  "id": "REQ-024",
+  "requirement": "The system shall receive independent GPS position from primary and secondary GPS receivers via ARINC 429 Label 310 and 311.",
+  "extraction": {
+    "subject": "FMS",
+    "verb": "Receive",
+    "objects": [
+      "barometric altitude"
+    ],
+    "sources": [
+      "ADC"
+    ],
+    "destinations": [],
+    "constraints": [
+      "ARINC 429 Label 200",
+      "20 Hz"
+    ]
+  }
+}

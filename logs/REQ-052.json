@@ -1,0 +1,19 @@
+{
+  "id": "REQ-052",
+  "requirement": "The system shall support simultaneous dual independent flight plan editing sessions from captain and first-officer CDUs without cross-contamination.",
+  "extraction": {
+    "subject": "FMS",
+    "verb": "may report",
+    "objects": [
+      "barometric altitude"
+    ],
+    "sources": [
+      "ADC"
+    ],
+    "destinations": [],
+    "constraints": [
+      "ARINC 429 Label 200",
+      "20 Hz"
+    ]
+  }
+}

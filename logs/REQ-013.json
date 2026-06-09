@@ -1,0 +1,23 @@
+{
+  "id": "REQ-013",
+  "requirement": "The VNAV engine shall compute target vertical speed or flight path angle to match the calculated vertical profile.",
+  "extraction": {
+    "subject": "VNAV",
+    "verb": "Compute target vertical speed or flight path angle",
+    "objects": [
+      "vertical profile",
+      "calculated vertical profile"
+    ],
+    "sources": [
+      "ARINC 429 Label 200",
+      "FMS"
+    ],
+    "destinations": [
+      "ADC",
+      "barometric altitude"
+    ],
+    "constraints": [
+      "20 Hz"
+    ]
+  }
+}

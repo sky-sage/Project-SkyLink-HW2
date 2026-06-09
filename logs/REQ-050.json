@@ -1,0 +1,19 @@
+{
+  "id": "REQ-050",
+  "requirement": "The system shall provide crew-accessible status page showing current sensor validity, active navigation mode, and maintenance fault count.",
+  "extraction": {
+    "subject": "Sensor Validity",
+    "verb": "Determine",
+    "objects": [
+      "barometric altitude"
+    ],
+    "sources": [
+      "ADC"
+    ],
+    "destinations": [],
+    "constraints": [
+      "ARINC 429 Label 200",
+      "20 Hz"
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "REQ-033",
+  "requirement": "The system shall display cross-track error as a deviation bar on the PFD lateral deviation scale.",
+  "extraction": {
+    "subject": "receive",
+    "verb": "receiving",
+    "objects": [
+      "barometric altitude"
+    ],
+    "sources": [
+      "ADC",
+      "ARINC 429 Label 200"
+    ],
+    "destinations": [
+      "FMS"
+    ],
+    "constraints": [
+      "minimum update rate of 20 Hz"
+    ]
+  }
+}

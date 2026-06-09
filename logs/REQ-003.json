@@ -1,0 +1,21 @@
+{
+  "id": "REQ-003",
+  "requirement": "The LNAV engine shall compute great-circle track and distance between consecutive waypoints in the active flight plan.",
+  "extraction": {
+    "subject": "great-circle track between waypoints",
+    "verb": "compute",
+    "objects": [
+      "waypoints A",
+      "waypoints B"
+    ],
+    "sources": [
+      "barometric altitude sensor",
+      "IMU gyroscope"
+    ],
+    "destinations": [],
+    "constraints": [
+      "barometric altitude sensor",
+      "IMU gyroscope"
+    ]
+  }
+}

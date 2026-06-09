@@ -1,0 +1,70 @@
+DATASET 5: eVTOL Urban Air Mobility Vehicle
+Platform: Multi-rotor electric vertical takeoff and landing urban air taxi (6-18 rotors)
+Standard: DO-178C DAL-A, FAA AC 21.17-4, EASA SC-VTOL-01
+
+=== GROUP 1: Propulsion & Battery Management ===
+REQ-001: The propulsion management software shall receive motor speed, current, temperature, and fault status from each motor controller at a minimum rate of 100 Hz.
+REQ-002: The system shall compute total rotor thrust by summing individual rotor thrust estimates from all active motor controllers on every propulsion cycle.
+REQ-003: The battery management system shall sample cell voltage, cell temperature, and pack current for each battery pack at a minimum rate of 10 Hz.
+REQ-004: The system shall compute state of charge for each battery pack using a Coulomb-counting algorithm corrected by an open-circuit voltage model.
+REQ-005: The battery management system shall detect cell overvoltage, undervoltage, and overtemperature conditions and generate a battery fault within 100 milliseconds of condition onset.
+REQ-006: The system shall compute available energy across all battery packs and output total usable energy to the flight management computer on every power cycle.
+REQ-007: The propulsion management software shall detect motor controller failure and redistribute thrust commands to remaining healthy motors within 50 milliseconds.
+REQ-008: The system shall inhibit takeoff initiation when any motor controller reports a pre-flight self-test failure.
+REQ-009: The battery management system shall estimate remaining flight time using current power consumption and available battery energy on every power cycle.
+REQ-010: The system shall activate the low-energy caution when remaining flight time falls below the configured minimum reserve threshold.
+
+=== GROUP 2: Autonomous Flight Control ===
+REQ-011: The flight control software shall compute attitude control commands for all rotors at a minimum rate of 200 Hz.
+REQ-012: The system shall limit commanded roll to a maximum of 30 degrees and commanded pitch to a maximum of 20 degrees during normal urban operation.
+REQ-013: The flight control software shall compute thrust allocation across all rotors using a control allocation algorithm that accounts for rotor geometry and individual motor capability.
+REQ-014: The system shall implement envelope protection that prevents the vehicle from exceeding certified structural load limits under any combination of pilot or autopilot commands.
+REQ-015: The flight control software shall maintain vehicle position within a 3-meter radius of the commanded hover reference when in position-hold mode and wind is below the certified limit.
+REQ-016: The system shall execute an autonomous emergency landing sequence when all available battery energy falls below the configured emergency-land threshold.
+REQ-017: The flight control software shall transition smoothly between manual-assist, autopilot, and autonomous modes with no transient exceeding the configured attitude rate limit.
+REQ-018: The system shall compute vehicle ground speed and track angle from the navigation solution and output both to the flight management computer at 50 Hz.
+REQ-019: The flight control software shall inhibit all commanded rotor speed changes that would result in a net torque exceeding the configured structural limit of the airframe.
+REQ-020: The system shall detect single rotor loss and immediately reconfigure thrust allocation to remaining rotors to maintain controlled flight within certified performance limits.
+
+=== GROUP 3: Urban Navigation & Sense-and-Avoid ===
+REQ-021: The navigation software shall fuse GPS, vision-based odometry, and barometric altitude data to produce a best-estimate position with a horizontal uncertainty below 1 meter in nominal conditions.
+REQ-022: The system shall receive ADS-B traffic data and display nearby traffic to the passenger information system and ground operations center.
+REQ-023: The sense-and-avoid system shall detect obstacles using onboard LIDAR and camera sensors with a minimum detection range of 50 meters.
+REQ-024: The system shall compute a collision-avoidance maneuver and initiate it autonomously when an obstacle is detected within the configured collision-avoidance threshold distance.
+REQ-025: The navigation software shall use a pre-loaded urban airspace corridor database to constrain the computed flight path to approved routes.
+REQ-026: The system shall declare geofence breach and initiate a return-to-vertiport sequence when the computed position falls outside the authorized operational area.
+REQ-027: The sense-and-avoid system shall discriminate between static infrastructure and dynamic obstacles and apply separate avoidance margins for each category.
+REQ-028: The system shall maintain awareness of restricted airspace boundaries from the onboard airspace database and alert the flight management computer when approach within 500 meters is computed.
+REQ-029: The navigation software shall update the onboard airspace and corridor database via datalink connection when connected to the ground operations center.
+REQ-030: The system shall detect degraded sensor coverage from LIDAR or camera faults and increase minimum obstacle-avoidance margins automatically when coverage falls below the configured threshold.
+
+=== GROUP 4: Passenger Safety & Cabin Systems ===
+REQ-031: The vehicle safety system shall monitor cabin door-locked status for all passenger doors and inhibit takeoff when any door-locked status is false.
+REQ-032: The system shall generate a passenger safety briefing via the cabin display system during the pre-departure sequence and require crew acknowledgement before departure clearance.
+REQ-033: The vehicle shall maintain cabin altitude equivalent pressure below 8000 feet MSL during all phases of flight within the certified operating envelope.
+REQ-034: The safety system shall automatically deploy passenger restraint pre-tensioners when a crash-severity deceleration exceeding 4g is detected.
+REQ-035: The vehicle shall transmit passenger count and manifest data to the ground operations center before each departure.
+REQ-036: The cabin management system shall provide emergency lighting activation within 100 milliseconds of main power bus failure.
+REQ-037: The system shall monitor cabin temperature and generate a caution when cabin temperature exceeds 35 degrees Celsius.
+REQ-038: The safety system shall provide an emergency communication channel between the cabin and ground operations center that remains active on backup battery power.
+REQ-039: The vehicle shall transmit real-time vehicle health and position data to the ground operations center at a minimum rate of 1 Hz throughout all phases of operation.
+REQ-040: The cabin management system shall record passenger boarding and disembarkation events with timestamps in the operations log.
+
+=== GROUP 5: Ground Operations & Vertiport Integration ===
+REQ-041: The vehicle management computer shall receive vertiport landing pad assignment from the ground operations center via the datalink before initiating the approach sequence.
+REQ-042: The system shall compute a precision approach path to the assigned landing pad using the vertiport coordinate database and current navigation solution.
+REQ-043: The vehicle shall verify landing pad clear status from the ground sensor system before descending below 10 meters AGL on approach.
+REQ-044: The system shall abort the approach and execute a go-around when landing pad clear status becomes false below 30 meters AGL.
+REQ-045: The vehicle management computer shall transmit departure request to the vertiport management system and shall not initiate takeoff until departure clearance is received.
+REQ-046: The system shall inhibit departure clearance acceptance when any pre-departure health check item is unresolved.
+REQ-047: The vehicle shall log all vertiport operations events including pad assignment, clearance times, actual departure and arrival times, and pad vacate time in the operations recorder.
+REQ-048: The system shall support remote vehicle health inspection by authorized ground technicians via a secured wireless maintenance interface while the vehicle is on the ground.
+REQ-049: The vehicle management computer shall synchronize its internal clock with the ground operations center time server within 10 milliseconds before each departure.
+REQ-050: The system shall report post-flight vehicle health summary including motor exceedances, battery cycle count, and sensor fault log to the ground operations center within 2 minutes of landing.
+
+=== ANOMALOUS / EXCLUSIVE REQUIREMENTS ===
+REQ-051: The autonomous flight system shall continuously compute a minimum-risk landing site within gliding or powered-descent range and update this site on every navigation cycle as a contingency option, even during nominal operations.
+REQ-052: The vehicle shall enter a passenger-protective low-energy-impact descent profile autonomously when flight termination is triggered, prioritizing populated-area avoidance over vehicle survivability using the pre-loaded urban density map.
+REQ-053: The system shall detect acoustic noise signature anomalies in rotor wash patterns using onboard microphone arrays and correlate these with structural health monitoring data to predict bearing degradation before the next maintenance interval.
+REQ-054: The vehicle shall refuse departure if any passenger biometric boarding confirmation (where biometric boarding is configured) does not match the pre-loaded passenger manifest, and shall alert the ground operations center with the discrepancy.
+REQ-055: The sense-and-avoid system shall apply a dynamic no-fly buffer around detected emergency service vehicles (identified by ADS-B or visual classification) and automatically reroute around them with no crew input required.

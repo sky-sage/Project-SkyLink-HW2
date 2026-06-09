@@ -1,0 +1,16 @@
+{
+  "id": "REQ-005",
+  "requirement": "The system shall automatically sequence to the next waypoint when the aircraft enters a 2 NM turn anticipation radius.",
+  "extraction": {
+    "subject": "Waypoint sequencing",
+    "verb": "sequence",
+    "objects": [
+      "waypoint"
+    ],
+    "sources": [],
+    "destinations": [
+      "2 NM turn anticipation radius"
+    ],
+    "constraints": []
+  }
+}

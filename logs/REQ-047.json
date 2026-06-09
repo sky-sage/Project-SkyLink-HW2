@@ -1,0 +1,21 @@
+{
+  "id": "REQ-047",
+  "requirement": "The FMS shall log a timestamped event record for every mode transition, fault detection, and sensor validity change.",
+  "extraction": {
+    "subject": "FMS",
+    "verb": "receive",
+    "objects": [
+      "barometric altitude"
+    ],
+    "sources": [
+      "ADC"
+    ],
+    "destinations": [
+      "barometric altitude label on ADC"
+    ],
+    "constraints": [
+      "minimum update rate 20 Hz",
+      "ARINC 429 Label 200"
+    ]
+  }
+}

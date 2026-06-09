@@ -1,0 +1,70 @@
+DATASET 2: Military Fixed-Wing UAV (MALE Class)
+Platform: Medium Altitude Long Endurance Unmanned Aerial Vehicle
+Standard: MIL-STD-882E, DO-178C DAL-B, STANAG 4671
+
+=== GROUP 1: Mission Management ===
+REQ-001: The mission management software shall accept a mission upload only from an authenticated ground control station using the configured cryptographic key.
+REQ-002: The system shall validate that an uploaded mission contains at least one valid waypoint before storing it to non-volatile memory.
+REQ-003: The vehicle shall reject any mission waypoint whose latitude field falls outside the configured operational area boundary.
+REQ-004: The vehicle shall reject any mission waypoint whose altitude field exceeds the configured maximum operating altitude.
+REQ-005: The vehicle shall store the accepted mission to non-volatile memory and transmit a mission acknowledgement to the GCS within 3 seconds.
+REQ-006: The mission processor shall not begin execution until an explicit mission-start command is received from an authenticated GCS operator.
+REQ-007: When an abort command is received, the vehicle shall terminate the active mission and transition to the configured abort response mode within 2 seconds.
+REQ-008: The system shall advance to the next waypoint after waypoint capture is confirmed and before the next guidance cycle executes.
+REQ-009: The vehicle shall declare mission complete when the final waypoint in the accepted mission has been reached and captured.
+REQ-010: The mission management software shall log every mission-state transition with a timestamp to the onboard event recorder.
+
+=== GROUP 2: Navigation & Positioning ===
+REQ-011: The navigation software shall use GPS as the primary positioning source when RAIM integrity status is valid.
+REQ-012: The system shall fall back to inertial navigation when GPS RAIM status is invalid and inertial health status is valid.
+REQ-013: The vehicle shall declare degraded navigation when both GPS and inertial navigation sources are simultaneously invalid.
+REQ-014: The system shall propagate position using last-valid inertial velocity for up to 60 seconds during GPS outage before declaring navigation failed.
+REQ-015: The navigation software shall reject any GPS position update whose estimated horizontal position uncertainty exceeds 50 meters.
+REQ-016: The system shall compute ground speed from the blended navigation solution on every navigation cycle.
+REQ-017: The system shall compute true track angle using a quadrant-correct arctangent of horizontal velocity components.
+REQ-018: The navigation software shall normalize computed track angle to the range 0 to 360 degrees before outputting it to the guidance processor.
+REQ-019: The vehicle shall report position, altitude, groundspeed, and track angle in telemetry at the configured downlink rate.
+REQ-020: The system shall detect and flag GPS spoofing by comparing GPS-derived velocity against inertial-derived velocity when both sources are active.
+
+=== GROUP 3: Flight Control & Guidance ===
+REQ-021: The guidance software shall compute lateral cross-track error from current navigation position to the active flight plan leg on every guidance cycle.
+REQ-022: The system shall compute a course-correction command proportional to lateral cross-track error using the configured lateral gain.
+REQ-023: The guidance software shall clip the course-correction command to the configured maximum bank-angle command before passing it to the attitude control law.
+REQ-024: The attitude control law shall compute roll-control command from bank-angle error and roll-rate feedback using configured proportional and damping gains.
+REQ-025: The attitude control law shall compute pitch-control command from pitch-angle error and pitch-rate feedback using configured proportional and damping gains.
+REQ-026: The flight control software shall transmit clipped actuator commands to the actuator interface within 10 milliseconds of each control cycle completion.
+REQ-027: The system shall engage autopilot only when navigation, attitude, altitude, and propulsion health statuses are all valid.
+REQ-028: The flight control software shall disengage autopilot and store the exit cause when any required health status becomes invalid during autopilot operation.
+REQ-029: The system shall invoke attitude recovery commands when measured roll exceeds the configured roll-recovery threshold.
+REQ-030: The flight control software shall inhibit altitude hold mode whenever altitude sensor validity is false.
+
+=== GROUP 4: Communications & Link Management ===
+REQ-031: The communications software shall monitor primary command link health on every communication cycle.
+REQ-032: The system shall switch command reception to the backup link when primary link elapsed time exceeds the configured primary-link timeout.
+REQ-033: The vehicle shall declare command-link lost when both primary and backup link timeouts have been exceeded simultaneously.
+REQ-034: The system shall initiate the configured lost-link response (hold, return-to-base, or land) when lost-link timer exceeds the configured delay.
+REQ-035: The communications software shall reject any command message whose authentication field does not match the locally computed result.
+REQ-036: The system shall reject any command message whose sequence number is not newer than the last accepted sequence number for that source.
+REQ-037: The vehicle shall transmit telemetry on the primary link when it is healthy and automatically switch to the backup link otherwise.
+REQ-038: The system shall timestamp each telemetry message using the current system clock before transmission.
+REQ-039: The vehicle shall log a transmit-failure event when telemetry cannot be sent because both communication paths are unavailable.
+REQ-040: The communications software shall reduce non-essential data transmission rate when available link bandwidth falls below the configured minimum threshold.
+
+=== GROUP 5: Safety, Health & Emergency ===
+REQ-041: The health monitor shall compute the absolute difference between redundant altitude sensors on every monitoring cycle.
+REQ-042: The system shall set altitude disagreement fault when the redundant altitude difference exceeds the configured disagreement threshold.
+REQ-043: The health monitor shall declare inertial fault when the IMU self-test result indicates failure.
+REQ-044: The system shall declare propulsion fault when any motor-controller status word contains a critical-fault indication.
+REQ-045: The flight control software shall invoke the emergency-response routine within one control cycle after propulsion fault status becomes true.
+REQ-046: The battery management software shall compute estimated return-home energy using path length and configured energy-per-distance factor.
+REQ-047: The system shall select immediate landing when estimated return-home energy exceeds remaining battery capacity.
+REQ-048: The vehicle shall de-energize non-essential payload outputs immediately after battery-response mode selection.
+REQ-049: The system shall append fault-entry and fault-clear records to non-volatile event memory whenever monitored fault statuses change state.
+REQ-050: The vehicle shall reject software-update activation whenever motor-running or airspeed status indicates airborne operation.
+
+=== ANOMALOUS / EXCLUSIVE REQUIREMENTS ===
+REQ-051: The vehicle shall activate an onboard RF-jamming-detection algorithm and report jamming probability to the GCS when GPS signal quality degrades abruptly without atmospheric correlation.
+REQ-052: The mission management software shall wipe the accepted mission from non-volatile memory within 500 milliseconds of receiving an authenticated data-zeroize command.
+REQ-053: The system shall inhibit all downlink transmissions and enter radio-silent mode when a radio-silent command is received, regardless of lost-link timer state.
+REQ-054: The vehicle shall cross-check commanded waypoint coordinates against a pre-loaded geofence and shall refuse any waypoint that falls within a defined exclusion zone even if the mission is otherwise valid.
+REQ-055: The flight control software shall apply an asymmetric actuator-failure compensation algorithm when a single-actuator fault is detected, maintaining controlled flight on remaining actuators.

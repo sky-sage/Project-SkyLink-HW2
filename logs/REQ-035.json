@@ -1,0 +1,21 @@
+{
+  "id": "REQ-035",
+  "requirement": "The system shall generate a CDU scratchpad message for each active FMS advisory condition within 2 seconds of detection.",
+  "extraction": {
+    "subject": "FMS",
+    "verb": "generate",
+    "objects": [
+      "ADC",
+      "ARINC 429 Label 200",
+      "barometric altitude"
+    ],
+    "sources": [
+      "ADC",
+      "ARINC 429 Label 200"
+    ],
+    "destinations": [],
+    "constraints": [
+      ""
+    ]
+  }
+}

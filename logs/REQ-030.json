@@ -1,0 +1,22 @@
+{
+  "id": "REQ-030",
+  "requirement": "The FMS shall record all ARINC 429 bus communication faults in the non-volatile maintenance log.",
+  "extraction": {
+    "subject": "FMS",
+    "verb": "record \"ARINC 429 bus communication faults\"",
+    "objects": [
+      "ADU"
+    ],
+    "sources": [
+      "ADC",
+      "GND",
+      "other devices that report 429 bus faults"
+    ],
+    "destinations": [
+      "Report on ARINC 429 bus communication faults"
+    ],
+    "constraints": [
+      "ARINC 429 Bus Communication Faults"
+    ]
+  }
+}

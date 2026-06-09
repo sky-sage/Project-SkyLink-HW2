@@ -1,0 +1,70 @@
+DATASET 1: Commercial Airliner Flight Management System (FMS)
+Platform: Large Commercial Transport (B737/A320 class)
+Standard: DO-178C DAL-A/B, ARINC 702A
+
+=== GROUP 1: Flight Planning & Lateral Navigation (LNAV) ===
+REQ-001: The FMS shall allow the flight crew to manually input a flight plan of up to 100 waypoints via the Control Display Unit (CDU).
+REQ-002: The system shall retrieve latitude, longitude, and magnetic variation for each waypoint from the active Navigation Database.
+REQ-003: The LNAV engine shall compute great-circle track and distance between consecutive waypoints in the active flight plan.
+REQ-004: The LNAV engine shall calculate continuous lateral cross-track error and output it to the AFCS roll steering channel via ARINC 429 Label 244.
+REQ-005: The system shall automatically sequence to the next waypoint when the aircraft enters a 2 NM turn anticipation radius.
+REQ-006: The FMS shall support procedure legs defined in ARINC 424 format including TF, CF, DF, AF, RF, and CA leg types.
+REQ-007: The system shall allow the crew to insert, delete, or modify waypoints in the active flight plan without interrupting LNAV guidance.
+REQ-008: The FMS shall compute and display the magnetic track for each active flight plan leg on the CDU and ND.
+REQ-009: The system shall alert the crew when the active flight plan contains fewer than two remaining waypoints before destination.
+REQ-010: The LNAV engine shall output desired track angle to the AFCS on every guidance cycle at a minimum rate of 10 Hz.
+
+=== GROUP 2: Vertical Navigation (VNAV) ===
+REQ-011: The VNAV engine shall compute Top of Climb (TOC) and Top of Descent (TOD) based on aircraft performance and lateral flight plan.
+REQ-012: The system shall allow the crew to enter Zero Fuel Weight (ZFW) and Cost Index via the CDU performance initialization page.
+REQ-013: The VNAV engine shall compute target vertical speed or flight path angle to match the calculated vertical profile.
+REQ-014: The VNAV engine shall output vertical guidance commands to the autopilot pitch channel via ARINC 429 Label 245.
+REQ-015: The system shall dynamically recompute ETA for all downstream waypoints based on current groundspeed.
+REQ-016: The VNAV engine shall inhibit descent guidance whenever the active altitude constraint is more restrictive than the profile altitude.
+REQ-017: The system shall notify the crew of VNAV path deviations exceeding 200 ft from the computed profile.
+REQ-018: The FMS shall support VNAV speed transitions at defined waypoints from the procedure database.
+REQ-019: The system shall compute optimum cruise altitude based on current aircraft weight, Cost Index, and wind data.
+REQ-020: The VNAV engine shall limit commanded descent angles to a maximum of 6.0 degrees to remain within structural limits.
+
+=== GROUP 3: Fuel & Sensor Integration ===
+REQ-021: The system shall interface with the fuel quantity system at 1 Hz via ARINC 429 to acquire total current fuel weight.
+REQ-022: The system shall compute real-time fuel burn rate by summing fuel flow rates from all active ECUs.
+REQ-023: The system shall trigger a FUEL DISCREPANCY message when calculated fuel weight deviates more than 500 lbs for over 30 seconds.
+REQ-024: The system shall receive independent GPS position from primary and secondary GPS receivers via ARINC 429 Label 310 and 311.
+REQ-025: The position module shall compute FMS Best Position using a Kalman filter blending GPS and IRS inputs.
+REQ-026: The FMS shall receive barometric altitude from the ADC via ARINC 429 Label 200 at a minimum update rate of 20 Hz.
+REQ-027: The system shall receive true airspeed from the ADC via ARINC 429 Label 202 and use it in performance computations.
+REQ-028: The FMS shall detect and flag IRS position divergence when two IRS solutions differ by more than 2 NM.
+REQ-029: The system shall output FMS computed position to the EFIS symbol generator via ARINC 429 Label 240 and 241.
+REQ-030: The FMS shall record all ARINC 429 bus communication faults in the non-volatile maintenance log.
+
+=== GROUP 4: Cockpit Displays & Alerting ===
+REQ-031: The system shall render the active lateral flight plan including waypoints and curved transitions on the Navigation Display.
+REQ-032: The display processor shall project a TOD icon on the ND at the lateral position computed by the VNAV engine.
+REQ-033: The system shall display cross-track error as a deviation bar on the PFD lateral deviation scale.
+REQ-034: The FMS shall display ETA, fuel at destination, and distance remaining on the CDU progress page.
+REQ-035: The system shall generate a CDU scratchpad message for each active FMS advisory condition within 2 seconds of detection.
+REQ-036: The FMS shall output active waypoint identifier to the ND via ARINC 429 Label 012 at 1 Hz.
+REQ-037: The system shall suppress non-critical display updates when CDU processing load exceeds 80 percent of available CPU budget.
+REQ-038: The FMS shall display predicted fuel at alternate airport based on VNAV profile and fuel burn model.
+REQ-039: The system shall display wind direction and magnitude at cruise altitude on the CDU wind page.
+REQ-040: The FMS shall display a step climb recommendation when a higher altitude yields a fuel saving exceeding the configured threshold.
+
+=== GROUP 5: System Health & Maintenance ===
+REQ-041: The FMS shall perform a Power-On Self-Test within 5 seconds of receiving aircraft power to verify RAM, ROM, and processor health.
+REQ-042: The system shall maintain a non-volatile maintenance log of all hardware faults and bus failures, accessible via the ground maintenance Ethernet port.
+REQ-043: The FMS shall detect navigation database corruption using stored checksums and alert the crew before navigation mode is entered.
+REQ-044: The system shall support navigation database updates via a dedicated data-loader interface without interrupting operational software.
+REQ-045: The FMS shall output a system health word to the AFCS via ARINC 429 Label 270 on every processing cycle.
+REQ-046: The system shall automatically switch to the secondary FMS processor when a primary processor fault is detected within 100 milliseconds.
+REQ-047: The FMS shall log a timestamped event record for every mode transition, fault detection, and sensor validity change.
+REQ-048: The system shall validate software image integrity using a stored CRC on every power cycle before entering operational mode.
+REQ-049: The FMS shall reject any navigation database whose AIRAC cycle identifier does not match the configured valid cycle range.
+REQ-050: The system shall provide crew-accessible status page showing current sensor validity, active navigation mode, and maintenance fault count.
+
+=== ANOMALOUS / EXCLUSIVE REQUIREMENTS ===
+REQ-051: The FMS shall enter a reduced-functionality safe mode and inhibit all VNAV and LNAV outputs when internal temperature exceeds 85 degrees Celsius.
+REQ-052: The system shall support simultaneous dual independent flight plan editing sessions from captain and first-officer CDUs without cross-contamination.
+REQ-053: The FMS shall not modify the active flight plan during the final 1000 ft of approach unless a go-around is initiated.
+REQ-054: The system shall inhibit Cost Index computation and default to minimum-fuel mode when fuel quantity falls below the configured emergency fuel threshold.
+REQ-055: The FMS shall retain the last valid navigation solution for up to 90 seconds during a complete GPS and IRS blackout before declaring navigation failed.

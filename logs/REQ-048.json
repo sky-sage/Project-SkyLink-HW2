@@ -1,0 +1,20 @@
+{
+  "id": "REQ-048",
+  "requirement": "The system shall validate software image integrity using a stored CRC on every power cycle before entering operational mode.",
+  "extraction": {
+    "subject": "CRC value",
+    "verb": "take",
+    "objects": [
+      "crc value"
+    ],
+    "sources": [
+      "software image integrity"
+    ],
+    "destinations": [
+      "hash for quick access during power cycles"
+    ],
+    "constraints": [
+      "minimum update rate of 20 Hz"
+    ]
+  }
+}

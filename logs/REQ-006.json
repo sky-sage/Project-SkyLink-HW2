@@ -1,0 +1,18 @@
+{
+  "id": "REQ-006",
+  "requirement": "The FMS shall support procedure legs defined in ARINC 424 format including TF, CF, DF, AF, RF, and CA leg types.",
+  "extraction": {
+    "subject": "FMS",
+    "verb": "Receive",
+    "objects": [
+      "barometric altitude"
+    ],
+    "sources": [
+      "ADC"
+    ],
+    "destinations": [],
+    "constraints": [
+      "ARINC 429 Label 200"
+    ]
+  }
+}

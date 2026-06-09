@@ -1,0 +1,70 @@
+DATASET 4: Civil Helicopter Avionics
+Platform: Twin-engine medium helicopter (H175 / S-92 class), offshore / EMS operations
+Standard: DO-178C DAL-A/B, FAR Part 29, RTCA DO-160G
+
+=== GROUP 1: Navigation & Approach ===
+REQ-001: The avionics shall receive GPS position from the primary GPS receiver via ARINC 429 at a minimum update rate of 5 Hz.
+REQ-002: The system shall receive IRS position, velocity, and attitude from the primary IRS via ARINC 429 at a minimum update rate of 20 Hz.
+REQ-003: The navigation computer shall blend GPS and IRS data to produce a best-estimate position used for all guidance and display functions.
+REQ-004: The system shall support ILS localizer and glideslope deviation computation for Category I precision approach operations.
+REQ-005: The avionics shall support SBAS-based approach operations and output SBAS integrity status to the flight crew via the primary flight display.
+REQ-006: The navigation computer shall compute distance and bearing to the selected destination helipad using the active navigation database entry.
+REQ-007: The system shall generate a terrain proximity warning using the computed best-estimate altitude and the digital terrain elevation database.
+REQ-008: The avionics shall receive radio altitude from the radar altimeter via ARINC 429 Label 164 at 20 Hz and use it for approach monitoring below 500 ft AGL.
+REQ-009: The system shall output navigation source validity and estimated position uncertainty to the autopilot computer on every navigation cycle.
+REQ-010: The navigation computer shall support offshore platform approach guidance using pre-loaded platform coordinates from the offshore database.
+
+=== GROUP 2: Autopilot & Flight Director ===
+REQ-011: The autopilot shall engage only when attitude, altitude, and airspeed sensor validity statuses are all true.
+REQ-012: The flight director shall compute pitch and roll steering commands from the selected guidance mode and output them to the flight director display at 20 Hz.
+REQ-013: The autopilot shall limit commanded roll to a maximum of 27 degrees in normal operation.
+REQ-014: The autopilot shall limit commanded pitch to a maximum of 15 degrees nose-up and 10 degrees nose-down in normal operation.
+REQ-015: The system shall disengage the autopilot and illuminate the AP DISC caution light within 200 milliseconds when any required sensor validity becomes false.
+REQ-016: The autopilot shall provide an altitude hold mode that maintains barometric altitude within plus or minus 50 feet of the selected altitude.
+REQ-017: The system shall provide an airspeed hold mode that maintains indicated airspeed within plus or minus 5 knots of the selected airspeed.
+REQ-018: The autopilot shall provide a hover mode that maintains position within a 10-foot radius of the selected hover reference point when radio altitude is valid.
+REQ-019: The system shall provide an approach coupling mode that follows ILS or SBAS deviation commands during precision approach.
+REQ-020: The autopilot shall alert the crew via the master caution system when autopilot authority limit is reached on any axis.
+
+=== GROUP 3: Engine & Rotor Monitoring ===
+REQ-021: The engine monitoring system shall receive Ng, Nf, TGT, torque, and oil pressure from each engine FADEC via ARINC 429 at 10 Hz.
+REQ-022: The system shall display all engine parameters on the engine display unit with a maximum display latency of 200 milliseconds from sensor sample.
+REQ-023: The avionics shall generate a red ENGINE LIMIT caution when any engine parameter exceeds its certified limit.
+REQ-024: The system shall record engine exceedance events in the health and usage monitoring system with parameter value, duration, and timestamp.
+REQ-025: The avionics shall monitor main rotor RPM and generate a ROTOR LOW caution when rotor RPM falls below the configured minimum limit.
+REQ-026: The system shall compute total torque from individual engine torque inputs and alert the crew when combined torque exceeds the transmission limit.
+REQ-027: The engine monitoring system shall detect single-engine failure and automatically initiate the single-engine alerting sequence within 500 milliseconds.
+REQ-028: The avionics shall display fuel quantity from each tank and compute total usable fuel remaining on the fuel synoptic page.
+REQ-029: The system shall generate a FUEL LOW caution when total usable fuel falls below the configured minimum fuel threshold.
+REQ-030: The engine monitoring system shall detect and alert the crew to engine chip detector activation within 2 seconds of chip detector status change.
+
+=== GROUP 4: Crew Alerting & Displays ===
+REQ-031: The primary flight display shall continuously render attitude, altitude, airspeed, heading, vertical speed, and radio altitude during all phases of flight.
+REQ-032: The avionics shall generate a master warning tone and flash the master warning light within 500 milliseconds of any Category A warning condition detection.
+REQ-033: The system shall generate a master caution tone and illuminate the master caution light within 1 second of any Category B caution condition detection.
+REQ-034: The avionics shall display the active caution and warning list on the crew alerting system display, ordered by priority.
+REQ-035: The system shall suppress duplicate caution and warning entries in the alerting list when the same condition is detected from multiple sources.
+REQ-036: The avionics shall provide a terrain awareness and warning system display on the navigation display showing terrain threat areas color-coded by proximity.
+REQ-037: The system shall provide a traffic collision avoidance display showing intruder aircraft position and resolution advisory commands when TCAS is installed and operational.
+REQ-038: The avionics shall display outside air temperature on the crew display and use it in icing condition assessment.
+REQ-039: The system shall record all crew alerting events with condition type, onset time, and acknowledgement time in the flight data recorder.
+REQ-040: The avionics shall provide a vehicle and engine multifunction display page accessible from any multifunction display in the cockpit.
+
+=== GROUP 5: System Health & Redundancy ===
+REQ-041: The avionics shall perform a complete system self-test on power application and report pass or fail status to the crew before the first engine start.
+REQ-042: The system shall detect single LRU failures and reconfigure display and computation tasks to remaining healthy LRUs without crew intervention.
+REQ-043: The avionics shall maintain all safety-critical display and alerting functions using the backup instrument system when primary display units fail.
+REQ-044: The system shall detect and report ARINC 429 bus communication failures for all monitored buses within 2 seconds of failure onset.
+REQ-045: The avionics shall output a system health word to the flight data acquisition unit on every processing cycle.
+REQ-046: The system shall support avionics software updates via the data-loader port without requiring removal of any LRU from the aircraft.
+REQ-047: The avionics shall log all LRU health status changes and software configuration events to non-volatile maintenance memory.
+REQ-048: The system shall provide a maintenance mode accessible on the ground that displays detailed LRU diagnostics and bus traffic logs.
+REQ-049: The avionics shall validate software part number and checksum of each LRU on power-up and inhibit operational use of any LRU with an invalid software configuration.
+REQ-050: The system shall transmit LRU health status to the ground station health management system via the aircraft communications addressing and reporting system (ACARS) after each flight.
+
+=== ANOMALOUS / EXCLUSIVE REQUIREMENTS ===
+REQ-051: The offshore approach system shall cross-check the selected platform identifier against a real-time AIS feed when datalink connectivity is available and alert the crew if the platform position has moved more than 500 meters from the database entry.
+REQ-052: The avionics shall automatically activate the emergency locator transmitter and begin transmitting on 406 MHz within 5 seconds of detecting a crash-severity acceleration event exceeding 6g longitudinal or 4g lateral.
+REQ-053: The system shall inhibit approach coupling mode engagement when the computed wind shear index on approach path exceeds the configured safe limit.
+REQ-054: The avionics shall provide a hoist operations mode that commands a stabilized hover and displays hoist cable angle on the crew display when the hoist-equipped variant is configured.
+REQ-055: The system shall detect rotor icing onset using blade vibration signature analysis and alert the crew at least 90 seconds before anti-icing capacity is predicted to be exceeded.

@@ -1,0 +1,70 @@
+DATASET 3: Military Attack Helicopter Fire Control & Avionics
+Platform: Tandem-seat attack rotorcraft (AH-64 class)
+Standard: MIL-STD-882E, DO-178C, MIL-STD-1553B
+
+=== GROUP 1: Integrated Avionics & Navigation ===
+REQ-001: The integrated avionics system shall receive position, velocity, and attitude from the embedded GPS/INS unit via MIL-STD-1553B at 50 Hz.
+REQ-002: The navigation processor shall blend GPS and INS data using a blended Kalman filter to produce a single best navigation estimate.
+REQ-003: The system shall provide terrain-referenced navigation updates when the radar altimeter and digital terrain elevation database are both valid.
+REQ-004: The avionics shall output present position to the fire control computer via MIL-STD-1553B within one bus cycle of each navigation update.
+REQ-005: The system shall flag degraded navigation to all subsystems when position uncertainty exceeds the configured threshold for more than 5 seconds.
+REQ-006: The navigation processor shall maintain continuity of position estimate during GPS denial by dead-reckoning from last valid INS solution.
+REQ-007: The avionics shall receive magnetic heading from the flux valve and apply magnetic variation from the onboard database before outputting true heading.
+REQ-008: The system shall provide crew-selectable navigation modes including GPS primary, INS primary, and blended operation via the multifunction display.
+REQ-009: The avionics shall compute and display crosswind component and headwind component on the pilot flight display.
+REQ-010: The navigation system shall detect and alert the crew to INS drift exceeding 2 nautical miles per hour during pure-inertial operation.
+
+=== GROUP 2: Fire Control System ===
+REQ-011: The fire control computer shall compute target range using laser rangefinder return data received from the TADS sensor suite.
+REQ-012: The system shall compute target line-of-sight angle rates from the TADS tracker and apply lead-angle correction to the fire control solution.
+REQ-013: The fire control computer shall compute ballistic solution for the 30mm cannon accounting for range, muzzle velocity, wind, and aircraft velocity.
+REQ-014: The system shall inhibit weapon release commands when computed target range exceeds the configured maximum engagement range for the selected weapon.
+REQ-015: The fire control computer shall update the ballistic solution at a minimum rate of 25 Hz during an active engagement.
+REQ-016: The system shall output weapon-aim cues to the helmet-mounted display and HUD within 40 milliseconds of each ballistic solution update.
+REQ-017: The fire control computer shall manage Hellfire missile seeker head designation by transmitting laser code and designation timing to the TADS laser.
+REQ-018: The system shall inhibit Hellfire launch commands when missile self-test has not been completed or when missile status indicates a fault condition.
+REQ-019: The fire control computer shall compute rocket salvo spacing based on configured ripple interval and aircraft groundspeed.
+REQ-020: The system shall log each weapon release event with timestamp, target coordinates, weapon type, and fire control solution to the mission recorder.
+
+=== GROUP 3: Rotor & Engine Control Interface ===
+REQ-021: The avionics shall receive torque, Ng, Np, TGT, and oil pressure from each engine FADEC via MIL-STD-1553B at 20 Hz.
+REQ-022: The system shall alert the crew when either engine TGT exceeds the configured continuous limit.
+REQ-023: The avionics shall display engine health trend data including TGT margin and torque margin on the engine display page.
+REQ-024: The system shall generate a caution when main rotor RPM falls below the configured minimum RPM threshold.
+REQ-025: The avionics shall receive main gearbox chip detector status and generate a master caution when any chip detector activates.
+REQ-026: The system shall compute total transmission torque from individual engine torque inputs and alert the crew when total torque exceeds the transmission limit.
+REQ-027: The avionics shall record engine exceedance events including parameter exceeded, maximum value reached, and duration to the health and usage monitoring system.
+REQ-028: The system shall display fuel quantity for each fuel cell and compute total fuel remaining on the fuel management page.
+REQ-029: The avionics shall detect fuel transfer pump failure and alert the crew when any fuel transfer pump status indicates fault.
+REQ-030: The system shall inhibit engine start sequence commands when rotor brake engaged status is true.
+
+=== GROUP 4: Crew Systems & Displays ===
+REQ-031: The avionics shall drive the pilot night vision system (PNVS) stabilization commands from the helmet tracker at a minimum rate of 60 Hz.
+REQ-032: The system shall display FLIR imagery from the TADS sensor on the pilot display unit with less than 100 milliseconds end-to-end latency.
+REQ-033: The avionics shall provide a target handoff capability allowing the copilot-gunner to transfer an acquired target designation to the pilot station.
+REQ-034: The system shall display threat radar warning system alerts including threat type, bearing, and priority on the cockpit threat display.
+REQ-035: The avionics shall generate a master warning annunciation within 500 milliseconds of detecting any configured critical system fault.
+REQ-036: The system shall allow the crew to acknowledge and suppress non-critical caution annunciations via the caution panel acknowledge switch.
+REQ-037: The avionics shall provide a sensor select page allowing the crew to assign TADS, PNVS, or map imagery to each display independently.
+REQ-038: The system shall display aircraft attitude, altitude, airspeed, heading, and vertical speed on the primary flight display at all times during powered flight.
+REQ-039: The avionics shall record cockpit voice and multifunction display video on the crash-protected mission recorder.
+REQ-040: The system shall illuminate the master caution light within 200 milliseconds of any new caution condition being detected.
+
+=== GROUP 5: Electronic Warfare & Survivability ===
+REQ-041: The EW system shall receive threat radar emitter data from the radar warning receiver and classify each emitter by type and priority.
+REQ-042: The system shall automatically deploy chaff or flare countermeasures when a missile launch warning is received and automatic mode is selected.
+REQ-043: The avionics shall output threat bearing to the crew display within 1 second of threat detection by the radar warning receiver.
+REQ-044: The system shall inhibit active jammer transmission when the jammer self-test indicates a fault.
+REQ-045: The EW processor shall log all detected threat events including emitter type, bearing, intensity, and timestamp to the mission recorder.
+REQ-046: The system shall generate a laser warning alert and display laser source bearing when the laser warning receiver detects an interrogating laser.
+REQ-047: The avionics shall allow the crew to manually select specific countermeasure programs via the EW control panel.
+REQ-048: The system shall track countermeasure expendable quantities and inhibit automatic dispensing when the configured minimum reserve quantity is reached.
+REQ-049: The EW system shall not activate jammers when the aircraft is on the ground with rotor brake engaged.
+REQ-050: The system shall transmit a sanitized threat summary to wingman aircraft via the tactical datalink when a significant new threat is classified.
+
+=== ANOMALOUS / EXCLUSIVE REQUIREMENTS ===
+REQ-051: The fire control computer shall apply an autonomous target recognition confidence filter and suppress weapon-aim cues when target classification confidence falls below 70 percent.
+REQ-052: The system shall inhibit all weapon release commands when the IFF interrogator indicates the target platform may be friendly, regardless of crew input.
+REQ-053: The avionics shall store a cryptographically signed mission data package including all weapon events and sensor imagery in tamper-evident non-volatile memory accessible only to authorized ground exploitation systems.
+REQ-054: The system shall continuously monitor rotor track and balance data from embedded blade sensors and alert maintenance when vibration signature deviates from the baseline envelope by more than the configured threshold.
+REQ-055: The avionics shall enter an emission-control mode suppressing all non-essential RF transmissions within 500 milliseconds of receiving an authenticated EMCON command via the tactical datalink.

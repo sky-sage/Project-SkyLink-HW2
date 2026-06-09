@@ -1,0 +1,20 @@
+{
+  "id": "REQ-040",
+  "requirement": "The FMS shall display a step climb recommendation when a higher altitude yields a fuel saving exceeding the configured threshold.",
+  "extraction": {
+    "subject": "FMS",
+    "verb": "suggest step climb",
+    "objects": [
+      "barometric altitude",
+      "fuel saving at higher altitude"
+    ],
+    "sources": [
+      "ADC via ARINC 429 Label 200",
+      "barometric altitude"
+    ],
+    "destinations": [
+      "suggested step climbs"
+    ],
+    "constraints": []
+  }
+}

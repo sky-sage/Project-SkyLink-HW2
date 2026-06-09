@@ -1,0 +1,14 @@
+{
+  "id": "REQ-009",
+  "requirement": "The system shall alert the crew when the active flight plan contains fewer than two remaining waypoints before destination.",
+  "extraction": {
+    "subject": "active flight plan",
+    "verb": "contains fewer than two remaining waypoints",
+    "objects": [],
+    "sources": [
+      "the requirement"
+    ],
+    "destinations": "",
+    "constraints": []
+  }
+}

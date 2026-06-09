@@ -1,0 +1,19 @@
+{
+  "id": "REQ-022",
+  "requirement": "The system shall compute real-time fuel burn rate by summing fuel flow rates from all active ECUs.",
+  "extraction": {
+    "subject": "Fuel Management System",
+    "verb": "Compute",
+    "objects": [
+      "Barometric altitude",
+      "Acoustic distance measurement"
+    ],
+    "sources": [
+      "ACM"
+    ],
+    "destinations": [],
+    "constraints": [
+      "Minimum update rate of 20 Hz"
+    ]
+  }
+}

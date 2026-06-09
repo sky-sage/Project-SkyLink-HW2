@@ -1,0 +1,25 @@
+{
+  "id": "REQ-002",
+  "requirement": "The system shall retrieve latitude, longitude, and magnetic variation for each waypoint from the active Navigation Database.",
+  "extraction": {
+    "subject": "_requirement",
+    "verb": "extract",
+    "objects": [
+      "latitude",
+      "longitude",
+      "magnetic variation"
+    ],
+    "sources": [
+      "ADC",
+      "ARINC 429 Label 200"
+    ],
+    "destinations": [
+      "unknown",
+      "unknown",
+      "unknown"
+    ],
+    "constraints": [
+      "minimum update rate of 20 Hz"
+    ]
+  }
+}

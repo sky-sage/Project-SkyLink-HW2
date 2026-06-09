@@ -1,0 +1,22 @@
+{
+  "id": "REQ-055",
+  "requirement": "The FMS shall retain the last valid navigation solution for up to 90 seconds during a complete GPS and IRS blackout before declaring navigation failed.",
+  "extraction": {
+    "subject": "FMS",
+    "verb": "retain navigation solutions",
+    "objects": [
+      "barometric altitude"
+    ],
+    "sources": [
+      "ADC",
+      "ARINC 429 Label 200"
+    ],
+    "destinations": [
+      "ADC",
+      "ARINC 429 Label 200"
+    ],
+    "constraints": [
+      "minimum update rate of 20 Hz"
+    ]
+  }
+}

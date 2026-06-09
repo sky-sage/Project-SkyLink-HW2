@@ -1,0 +1,21 @@
+{
+  "id": "REQ-044",
+  "requirement": "The system shall support navigation database updates via a dedicated data-loader interface without interrupting operational software.",
+  "extraction": {
+    "subject": "FMS",
+    "verb": "receives data from ADC via ARINC 429 Label 200",
+    "objects": [
+      "barometric altitude",
+      "ADC"
+    ],
+    "sources": [
+      "ARINC 429 Label 200"
+    ],
+    "destinations": [
+      "barometric altitude"
+    ],
+    "constraints": [
+      "20 Hz"
+    ]
+  }
+}

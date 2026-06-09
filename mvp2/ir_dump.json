@@ -1,0 +1,332 @@
+[
+  {
+    "id": "REQ-001",
+    "requirement": "The FMS shall allow the flight crew to manually input a flight plan of up to 100 waypoints via the Control Display Unit (CDU).",
+    "extraction": null,
+    "error": "Could not parse:\n"
+  },
+  {
+    "id": "REQ-002",
+    "requirement": "The system shall retrieve latitude, longitude, and magnetic variation for each waypoint from the active Navigation Database.",
+    "extraction": null,
+    "error": "Could not parse:\n"
+  },
+  {
+    "id": "REQ-003",
+    "requirement": "The LNAV engine shall compute great-circle track and distance between consecutive waypoints in the active flight plan.",
+    "extraction": null,
+    "error": "Could not parse:\n"
+  },
+  {
+    "id": "REQ-004",
+    "requirement": "The LNAV engine shall calculate continuous lateral cross-track error and output it to the AFCS roll steering channel via ARINC 429 Label 244.",
+    "extraction": null,
+    "error": "Could not parse:\n"
+  },
+  {
+    "id": "REQ-005",
+    "requirement": "The system shall automatically sequence to the next waypoint when the aircraft enters a 2 NM turn anticipation radius.",
+    "extraction": null,
+    "error": "Could not parse:\n"
+  },
+  {
+    "id": "REQ-006",
+    "requirement": "The FMS shall support procedure legs defined in ARINC 424 format including TF, CF, DF, AF, RF, and CA leg types.",
+    "extraction": null,
+    "error": "Could not parse:\n"
+  },
+  {
+    "id": "REQ-007",
+    "requirement": "The system shall allow the crew to insert, delete, or modify waypoints in the active flight plan without interrupting LNAV guidance.",
+    "extraction": null,
+    "error": "Could not parse:\n"
+  },
+  {
+    "id": "REQ-008",
+    "requirement": "The FMS shall compute and display the magnetic track for each active flight plan leg on the CDU and ND.",
+    "extraction": null,
+    "error": "Could not parse:\n"
+  },
+  {
+    "id": "REQ-009",
+    "requirement": "The system shall alert the crew when the active flight plan contains fewer than two remaining waypoints before destination.",
+    "extraction": null,
+    "error": "Could not parse:\n"
+  },
+  {
+    "id": "REQ-010",
+    "requirement": "The LNAV engine shall output desired track angle to the AFCS on every guidance cycle at a minimum rate of 10 Hz.",
+    "extraction": null,
+    "error": "Could not parse:\n"
+  },
+  {
+    "id": "REQ-011",
+    "requirement": "The VNAV engine shall compute Top of Climb (TOC) and Top of Descent (TOD) based on aircraft performance and lateral flight plan.",
+    "extraction": null,
+    "error": "Could not parse:\n"
+  },
+  {
+    "id": "REQ-012",
+    "requirement": "The system shall allow the crew to enter Zero Fuel Weight (ZFW) and Cost Index via the CDU performance initialization page.",
+    "extraction": null,
+    "error": "Could not parse:\n"
+  },
+  {
+    "id": "REQ-013",
+    "requirement": "The VNAV engine shall compute target vertical speed or flight path angle to match the calculated vertical profile.",
+    "extraction": null,
+    "error": "Could not parse:\n"
+  },
+  {
+    "id": "REQ-014",
+    "requirement": "The VNAV engine shall output vertical guidance commands to the autopilot pitch channel via ARINC 429 Label 245.",
+    "extraction": null,
+    "error": "Could not parse:\n"
+  },
+  {
+    "id": "REQ-015",
+    "requirement": "The system shall dynamically recompute ETA for all downstream waypoints based on current groundspeed.",
+    "extraction": null,
+    "error": "Could not parse:\n"
+  },
+  {
+    "id": "REQ-016",
+    "requirement": "The VNAV engine shall inhibit descent guidance whenever the active altitude constraint is more restrictive than the profile altitude.",
+    "extraction": null,
+    "error": "Could not parse:\n"
+  },
+  {
+    "id": "REQ-017",
+    "requirement": "The system shall notify the crew of VNAV path deviations exceeding 200 ft from the computed profile.",
+    "extraction": null,
+    "error": "Could not parse:\n"
+  },
+  {
+    "id": "REQ-018",
+    "requirement": "The FMS shall support VNAV speed transitions at defined waypoints from the procedure database.",
+    "extraction": null,
+    "error": "Could not parse:\n"
+  },
+  {
+    "id": "REQ-019",
+    "requirement": "The system shall compute optimum cruise altitude based on current aircraft weight, Cost Index, and wind data.",
+    "extraction": null,
+    "error": "Could not parse:\n"
+  },
+  {
+    "id": "REQ-020",
+    "requirement": "The VNAV engine shall limit commanded descent angles to a maximum of 6.0 degrees to remain within structural limits.",
+    "extraction": null,
+    "error": "Could not parse:\n"
+  },
+  {
+    "id": "REQ-021",
+    "requirement": "The system shall interface with the fuel quantity system at 1 Hz via ARINC 429 to acquire total current fuel weight.",
+    "extraction": null,
+    "error": "Could not parse:\n"
+  },
+  {
+    "id": "REQ-022",
+    "requirement": "The system shall compute real-time fuel burn rate by summing fuel flow rates from all active ECUs.",
+    "extraction": null,
+    "error": "Could not parse:\n"
+  },
+  {
+    "id": "REQ-023",
+    "requirement": "The system shall trigger a FUEL DISCREPANCY message when calculated fuel weight deviates more than 500 lbs for over 30 seconds.",
+    "extraction": null,
+    "error": "Could not parse:\n"
+  },
+  {
+    "id": "REQ-024",
+    "requirement": "The system shall receive independent GPS position from primary and secondary GPS receivers via ARINC 429 Label 310 and 311.",
+    "extraction": null,
+    "error": "Could not parse:\n"
+  },
+  {
+    "id": "REQ-025",
+    "requirement": "The position module shall compute FMS Best Position using a Kalman filter blending GPS and IRS inputs.",
+    "extraction": null,
+    "error": "Could not parse:\n"
+  },
+  {
+    "id": "REQ-026",
+    "requirement": "The FMS shall receive barometric altitude from the ADC via ARINC 429 Label 200 at a minimum update rate of 20 Hz.",
+    "extraction": null,
+    "error": "Could not parse:\n"
+  },
+  {
+    "id": "REQ-027",
+    "requirement": "The system shall receive true airspeed from the ADC via ARINC 429 Label 202 and use it in performance computations.",
+    "extraction": null,
+    "error": "Could not parse:\n"
+  },
+  {
+    "id": "REQ-028",
+    "requirement": "The FMS shall detect and flag IRS position divergence when two IRS solutions differ by more than 2 NM.",
+    "extraction": null,
+    "error": "Could not parse:\n"
+  },
+  {
+    "id": "REQ-029",
+    "requirement": "The system shall output FMS computed position to the EFIS symbol generator via ARINC 429 Label 240 and 241.",
+    "extraction": null,
+    "error": "Could not parse:\n"
+  },
+  {
+    "id": "REQ-030",
+    "requirement": "The FMS shall record all ARINC 429 bus communication faults in the non-volatile maintenance log.",
+    "extraction": null,
+    "error": "Could not parse:\n"
+  },
+  {
+    "id": "REQ-031",
+    "requirement": "The system shall render the active lateral flight plan including waypoints and curved transitions on the Navigation Display.",
+    "extraction": null,
+    "error": "Could not parse:\n"
+  },
+  {
+    "id": "REQ-032",
+    "requirement": "The display processor shall project a TOD icon on the ND at the lateral position computed by the VNAV engine.",
+    "extraction": null,
+    "error": "Could not parse:\n"
+  },
+  {
+    "id": "REQ-033",
+    "requirement": "The system shall display cross-track error as a deviation bar on the PFD lateral deviation scale.",
+    "extraction": null,
+    "error": "Could not parse:\n"
+  },
+  {
+    "id": "REQ-034",
+    "requirement": "The FMS shall display ETA, fuel at destination, and distance remaining on the CDU progress page.",
+    "extraction": null,
+    "error": "Could not parse:\n"
+  },
+  {
+    "id": "REQ-035",
+    "requirement": "The system shall generate a CDU scratchpad message for each active FMS advisory condition within 2 seconds of detection.",
+    "extraction": null,
+    "error": "Could not parse:\n"
+  },
+  {
+    "id": "REQ-036",
+    "requirement": "The FMS shall output active waypoint identifier to the ND via ARINC 429 Label 012 at 1 Hz.",
+    "extraction": null,
+    "error": "Could not parse:\n"
+  },
+  {
+    "id": "REQ-037",
+    "requirement": "The system shall suppress non-critical display updates when CDU processing load exceeds 80 percent of available CPU budget.",
+    "extraction": null,
+    "error": "Could not parse:\n"
+  },
+  {
+    "id": "REQ-038",
+    "requirement": "The FMS shall display predicted fuel at alternate airport based on VNAV profile and fuel burn model.",
+    "extraction": null,
+    "error": "Could not parse:\n"
+  },
+  {
+    "id": "REQ-039",
+    "requirement": "The system shall display wind direction and magnitude at cruise altitude on the CDU wind page.",
+    "extraction": null,
+    "error": "Could not parse:\n"
+  },
+  {
+    "id": "REQ-040",
+    "requirement": "The FMS shall display a step climb recommendation when a higher altitude yields a fuel saving exceeding the configured threshold.",
+    "extraction": null,
+    "error": "Could not parse:\n"
+  },
+  {
+    "id": "REQ-041",
+    "requirement": "The FMS shall perform a Power-On Self-Test within 5 seconds of receiving aircraft power to verify RAM, ROM, and processor health.",
+    "extraction": null,
+    "error": "Could not parse:\n"
+  },
+  {
+    "id": "REQ-042",
+    "requirement": "The system shall maintain a non-volatile maintenance log of all hardware faults and bus failures, accessible via the ground maintenance Ethernet port.",
+    "extraction": null,
+    "error": "Could not parse:\n"
+  },
+  {
+    "id": "REQ-043",
+    "requirement": "The FMS shall detect navigation database corruption using stored checksums and alert the crew before navigation mode is entered.",
+    "extraction": null,
+    "error": "Could not parse:\n"
+  },
+  {
+    "id": "REQ-044",
+    "requirement": "The system shall support navigation database updates via a dedicated data-loader interface without interrupting operational software.",
+    "extraction": null,
+    "error": "Could not parse:\n"
+  },
+  {
+    "id": "REQ-045",
+    "requirement": "The FMS shall output a system health word to the AFCS via ARINC 429 Label 270 on every processing cycle.",
+    "extraction": null,
+    "error": "Could not parse:\n"
+  },
+  {
+    "id": "REQ-046",
+    "requirement": "The system shall automatically switch to the secondary FMS processor when a primary processor fault is detected within 100 milliseconds.",
+    "extraction": null,
+    "error": "Could not parse:\n"
+  },
+  {
+    "id": "REQ-047",
+    "requirement": "The FMS shall log a timestamped event record for every mode transition, fault detection, and sensor validity change.",
+    "extraction": null,
+    "error": "Could not parse:\n"
+  },
+  {
+    "id": "REQ-048",
+    "requirement": "The system shall validate software image integrity using a stored CRC on every power cycle before entering operational mode.",
+    "extraction": null,
+    "error": "Could not parse:\n"
+  },
+  {
+    "id": "REQ-049",
+    "requirement": "The FMS shall reject any navigation database whose AIRAC cycle identifier does not match the configured valid cycle range.",
+    "extraction": null,
+    "error": "Could not parse:\n"
+  },
+  {
+    "id": "REQ-050",
+    "requirement": "The system shall provide crew-accessible status page showing current sensor validity, active navigation mode, and maintenance fault count.",
+    "extraction": null,
+    "error": "Could not parse:\n"
+  },
+  {
+    "id": "REQ-051",
+    "requirement": "The FMS shall enter a reduced-functionality safe mode and inhibit all VNAV and LNAV outputs when internal temperature exceeds 85 degrees Celsius.",
+    "extraction": null,
+    "error": "Could not parse:\n"
+  },
+  {
+    "id": "REQ-052",
+    "requirement": "The system shall support simultaneous dual independent flight plan editing sessions from captain and first-officer CDUs without cross-contamination.",
+    "extraction": null,
+    "error": "Could not parse:\n"
+  },
+  {
+    "id": "REQ-053",
+    "requirement": "The FMS shall not modify the active flight plan during the final 1000 ft of approach unless a go-around is initiated.",
+    "extraction": null,
+    "error": "Could not parse:\n"
+  },
+  {
+    "id": "REQ-054",
+    "requirement": "The system shall inhibit Cost Index computation and default to minimum-fuel mode when fuel quantity falls below the configured emergency fuel threshold.",
+    "extraction": null,
+    "error": "Could not parse:\n"
+  },
+  {
+    "id": "REQ-055",
+    "requirement": "The FMS shall retain the last valid navigation solution for up to 90 seconds during a complete GPS and IRS blackout before declaring navigation failed.",
+    "extraction": null,
+    "error": "Could not parse:\n"
+  }
+]

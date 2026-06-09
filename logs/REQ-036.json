@@ -1,0 +1,18 @@
+{
+  "id": "REQ-036",
+  "requirement": "The FMS shall output active waypoint identifier to the ND via ARINC 429 Label 012 at 1 Hz.",
+  "extraction": {
+    "subject": "FMS",
+    "verb": "receive",
+    "objects": [
+      " waypoint identifier",
+      "ND"
+    ],
+    "sources": [
+      "ADC"
+    ],
+    "destinations": [
+      "ARINC 429 Label 012"
+    ]
+  }
+}

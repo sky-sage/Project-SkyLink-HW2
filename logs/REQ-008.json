@@ -1,0 +1,21 @@
+{
+  "id": "REQ-008",
+  "requirement": "The FMS shall compute and display the magnetic track for each active flight plan leg on the CDU and ND.",
+  "extraction": {
+    "subject": "FMS",
+    "verb": "receives",
+    "objects": [
+      "barometric altitude"
+    ],
+    "sources": [
+      "ADC"
+    ],
+    "destinations": [
+      "barometric altitude"
+    ],
+    "constraints": [
+      "ARINC 429 Label 200",
+      "20 Hz"
+    ]
+  }
+}
