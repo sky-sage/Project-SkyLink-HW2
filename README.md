@@ -1,30 +1,41 @@
-# Project Handover
+# Project SkyLink
 
-This project performs semantic analysis of aircraft/FMS requirements using local LLMs. `main.py` parses requirements and generates structured JSON logs via DeepSeek-R1. `hierarchy_llm.py` classifies those logs into subsystem hierarchies and exports an HTML visualization.
+Project SkyLink is an AI-powered requirements analysis platform for aircraft and Flight Management System (FMS) documentation. Using local LLMs, it extracts semantic information from requirements, generates structured JSON logs, classifies them into subsystem hierarchies, and visualizes relationships through interactive HTML graphs.
 
-Run:
+## Team
+- Akashneel Bhattacharya 
+- Samarth S Sastry
+- Aayush Shah
+- Rane Rushil Devendra
+
+## Usage
+
+Generate semantic requirement logs:
 
 ```bash
 python3 main.py
+```
+
+Generate hierarchy classification and visualization:
+
+```bash
 python3 hierarchy_llm.py
 ```
 
-Ensure Ollama and `deepseek-r1:1.5b` are installed before execution.
+## Prerequisites
+- Python 3
+- Ollama
+- `deepseek-r1:1.5b`
 
+## Repository Notes
+- `DP5_datasets/` contains synthetic logs generated from `main.py`.
+- Aircraft certification PDFs are provided as source documents.
+- Existing datasets may be reused, but fresh log generation is recommended.
 
-DP5_datasets -> all synthetic data
-logs -> pregenerated from main.py, can reuse but generate freshly from main.py instead
-pdfs -> TRUE CERTIFICATIONS for different aircrafts
-mvp2 -> containers log generator
-mvp2 -> graph gen -> attempt at creating pictorial plots (samarth to make two charts)
-
-TODO:
-iv) MAKE PROPER CLUSTERS
-i) make website for interactive session
-ii) attempt ocr for pdfs reading and extraction
-iii) make ppt 
-
-nice to have: 
-i) hover mode: gives info about that cluster
-ii) node colour CONFIDENCE SCORE: rates how much the req actually belongs to the cluster
-    (0-> 1, red -> blue)
+## Future Work
+- Improved clustering and hierarchy generation
+- Interactive web interface
+- OCR-based PDF extraction
+- Confidence-based node coloring
+- Hoverable cluster information
+- Additional analytics and presentation materials
